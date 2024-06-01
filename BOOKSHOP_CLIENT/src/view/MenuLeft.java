@@ -27,7 +27,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 
 public class MenuLeft extends JPanel{
@@ -42,11 +44,12 @@ public class MenuLeft extends JPanel{
 	private PlaceholderTextField tf_sdt;
 	private Model_KhachHang khachhang;
 	private ArrayList<Model_DonMua> donmuaList;
+	private int quay;
 	
 	public MenuLeft() {
 		setSize(300, 840);
 		setLayout(null);
-		setBackground(new Color(74, 170, 239));
+		setBackground(new Color(140, 110, 98));
 		
 		JLabel lb_logo = new JLabel("");
 		lb_logo.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/user_account.png")).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
@@ -225,12 +228,12 @@ public class MenuLeft extends JPanel{
 		bt_xuathoadon.setBounds(7, 604, 283, 36);
 		add(bt_xuathoadon);
 		
-		lb_quay = new JLabel("QUẦY SỐ 1");
+		lb_quay = new JLabel("TẦNG 1");
 		lb_quay.setForeground(new Color(0, 0, 0));
 		lb_quay.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lb_quay.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_quay.setBounds(0, 763, 300, 41);
-		lb_quay.setBackground(new Color(183, 225, 255));
+		lb_quay.setBackground(new Color(189, 156, 145));
 		lb_quay.setOpaque(true);
 		add(lb_quay);
 				
@@ -238,7 +241,8 @@ public class MenuLeft extends JPanel{
 	
 	public void update(String name, int quay) {
 		lb_username.setText(name);
-		lb_quay.setText("QUẦY SỐ " + quay);
+		lb_quay.setText("TẦNG " + quay);
+		this.quay = quay;
 	}
 	
 	public void tracuu(Model_KhachHang khachhang) {
@@ -293,10 +297,19 @@ public class MenuLeft extends JPanel{
     	
     	HoaDon hoadon = new HoaDon();
     	int stt = 1;
-    	hoadon.getTextArea().append(String.format("%-7s%-50s%-15s%-6s%-15s\n", "STT", "Tên Sách", "Đơn giá", "SL", "Thành tiền"));
+    	int tong = 0;
+    	hoadon.getTextArea().append(String.format("%-7s%-50s%-15s%-6s%-15s\n", "STT", "Đồ uống", "Đơn giá", "SL", "Thành tiền"));
 		for(Model_DonMua donmua : donmuaList) { 
         	hoadon.getTextArea().append(String.format("%-7s%-50s%-15s%-6s%-15s\n", stt++, donmua.getTenSach(), donmua.getGia(), donmua.getSoluong(), donmua.getGia()*donmua.getSoluong()));
-        }
+		}
+        NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        String tongtien = currencyFormatter.format(Integer.parseInt(tf_dongia.getText()));
+        String tongthu = currencyFormatter.format(Integer.parseInt(tf_thanhtoan.getText()));
+        String giamgia = currencyFormatter.format(Integer.parseInt(tf_giamgia.getText()));
+    	hoadon.getTextArea().append(String.format("\n%-20s%s", "Tổng tiền: ", tongtien));
+        hoadon.getTextArea().append(String.format("\n%-20s%s", "Giảm giá: ", giamgia));
+    	hoadon.getTextArea().append(String.format("\n%-20s%s", "Thanh toán: ", tongthu));
+
     	
 		QRCodePaymentGenerator.generatePaymentQRCode(hoadon.getLb_qr(), "0979727604", Integer.parseInt(tf_thanhtoan.getText()));
     	
@@ -318,6 +331,8 @@ public class MenuLeft extends JPanel{
 		tf_giamgia.setText("0");
 		tf_thanhtoan.setText("0");
 		
+		donmuaList = new ArrayList();
+		
 		Service.getInstance().getMain().getBody().getTable_model().setRowCount(0);
 	}
 
@@ -327,6 +342,10 @@ public class MenuLeft extends JPanel{
 
 	public void setDonmuaList(ArrayList<Model_DonMua> donmuaList) {
 		this.donmuaList = donmuaList;
+	}
+
+	public int getQuay() {
+		return quay;
 	}
 	
 	

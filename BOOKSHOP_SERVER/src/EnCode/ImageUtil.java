@@ -15,7 +15,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 
 import service.Service;
-import view.component.ThemSach;
+import view.component.ThemNuoc;
 
 public class ImageUtil {
 

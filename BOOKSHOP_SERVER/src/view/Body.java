@@ -8,7 +8,7 @@ public class Body extends JPanel{
 	
 	private CardLayout cardLayout;
 	private QL_DoanhThu doanhthu;
-	private QL_KhoSach khosach;
+	private QL_Nuoc khosach;
 	private QL_KhachHang khachhang;
 	private QL_NhanVien nhanvien;
 	private QL_CuaHang cuahang;
@@ -25,7 +25,7 @@ public class Body extends JPanel{
 		doanhthu = new QL_DoanhThu();
 		add(doanhthu, "doanhthu");
 		
-		khosach = new QL_KhoSach();
+		khosach = new QL_Nuoc();
 		add(khosach, "khosach");
 		
 		khachhang = new QL_KhachHang();
@@ -47,7 +47,7 @@ public class Body extends JPanel{
 		return doanhthu;
 	}
 
-	public QL_KhoSach getKhosach() {
+	public QL_Nuoc getKhosach() {
 		return khosach;
 	}
 

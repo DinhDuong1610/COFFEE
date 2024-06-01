@@ -13,10 +13,10 @@ public class DBAccount {
 	private static DBAccount instance;
 	
 	private final String CHECK_REGISTER = "SELECT username FROM account WHERE username=?";
-	private final String INSERT_USER = "INSERT INTO account (username, `password`) VALUES (?, ?)";
+	private final String INSERT_USER = "INSERT INTO account (username, `password`, maNhanVien) VALUES (?, ?, 100000000)";
 	private final String CHECK_lOGIN = "SELECT username FROM account WHERE username=? AND `password`=?";
 	private final String UPDATE_MANHANVIEN = "UPDATE account SET maNhanVien=? WHERE username=?";
-	private final String SELECT_USER = "SELECT username FROM account";
+	private final String SELECT_USER = "SELECT username FROM account ORDER BY maNhanVien ASC";
 	private final String SELECT_NHANVIEN = "SELECT nhanvien.maNhanVien, ten, cccd, gioitinh, ngaysinh, sdt, chucvu, luong "
 			+ "FROM nhanvien JOIN account ON nhanvien.maNhanVien = account.maNhanVien WHERE username=?";
 	
@@ -78,10 +78,11 @@ public class DBAccount {
 	}
 	
 	public void updateMaNhanVien(int maNV) {
+		String user = dongcuoi();
         try {
             PreparedStatement p = con.prepareStatement(UPDATE_MANHANVIEN);
             p.setInt(1, maNV);
-            p.setString(2, dongcuoi());
+            p.setString(2, user);
             p.execute();
             p.close();
 		} catch (Exception e) {
@@ -96,6 +97,7 @@ public class DBAccount {
             ResultSet r = p.executeQuery();
             while(r.next() ) {
             	username = r.getString(1);
+            	System.out.println(username);
             }
             r.close();
             p.close();

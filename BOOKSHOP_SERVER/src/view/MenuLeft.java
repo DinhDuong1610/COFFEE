@@ -27,10 +27,10 @@ public class MenuLeft extends JPanel{
 	public MenuLeft() {
 		setSize(300, 840);
 		setLayout(null);
-		setBackground(new Color(74, 170, 239));
+		setBackground(new Color(140, 110, 98));
 		
 		JLabel lb_logo = new JLabel("");
-		lb_logo.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_sach.jpg")).getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)));
+		lb_logo.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_menu.png")).getImage().getScaledInstance(180, 180, Image.SCALE_SMOOTH)));
 		lb_logo.setBounds(57, 32, 180, 180);
 		add(lb_logo);
 		
@@ -39,24 +39,24 @@ public class MenuLeft extends JPanel{
 		lb_QL_CuaHang.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_CuaHang.setBackground(new Color(34, 133, 205));
+				lb_QL_CuaHang.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_CuaHang.setBackground(new Color(135, 200, 246));
+				lb_QL_CuaHang.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "cuahang");
 				reset();
-				lb_QL_CuaHang.setBackground(new Color(34, 133, 205));
+				lb_QL_CuaHang.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_CuaHang.setForeground(new Color(255, 255, 255));
 		lb_QL_CuaHang.setFont(new Font("Tahoma", Font.BOLD, 22));
 		lb_QL_CuaHang.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_CuaHang.setBounds(0, 283, 300, 58);
-		lb_QL_CuaHang.setBackground(new Color(135, 200, 246));
+		lb_QL_CuaHang.setBackground(new Color(189, 156, 145));
 		lb_QL_CuaHang.setOpaque(true);
 		add(lb_QL_CuaHang);
 		
@@ -65,50 +65,50 @@ public class MenuLeft extends JPanel{
 		lb_QL_NhanVien.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_NhanVien.setBackground(new Color(34, 133, 205));
+				lb_QL_NhanVien.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_NhanVien.setBackground(new Color(135, 200, 246));
+				lb_QL_NhanVien.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "nhanvien");
 				reset();
-				lb_QL_NhanVien.setBackground(new Color(34, 133, 205));
+				lb_QL_NhanVien.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_NhanVien.setOpaque(true);
 		lb_QL_NhanVien.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_NhanVien.setForeground(Color.WHITE);
 		lb_QL_NhanVien.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lb_QL_NhanVien.setBackground(new Color(135, 200, 246));
+		lb_QL_NhanVien.setBackground(new Color(189, 156, 145));
 		lb_QL_NhanVien.setBounds(0, 345, 300, 58);
 		add(lb_QL_NhanVien);
 		
-		lb_QL_KhoSach = new JLabel("QUẢN LÝ KHO SÁCH");
-		lb_QL_KhoSach.setIcon(new ImageIcon(MenuLeft.class.getResource("/images/sach.png")));
+		lb_QL_KhoSach = new JLabel("QUẢN LÝ ĐỒ UỐNG");
+		lb_QL_KhoSach.setIcon(new ImageIcon(MenuLeft.class.getResource("/images/douong.png")));
 		lb_QL_KhoSach.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_KhoSach.setBackground(new Color(34, 133, 205));
+				lb_QL_KhoSach.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_KhoSach.setBackground(new Color(135, 200, 246));
+				lb_QL_KhoSach.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "khosach");
 				reset();
-				lb_QL_KhoSach.setBackground(new Color(34, 133, 205));
+				lb_QL_KhoSach.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_KhoSach.setOpaque(true);
 		lb_QL_KhoSach.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_KhoSach.setForeground(Color.WHITE);
 		lb_QL_KhoSach.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lb_QL_KhoSach.setBackground(new Color(135, 200, 246));
+		lb_QL_KhoSach.setBackground(new Color(189, 156, 145));
 		lb_QL_KhoSach.setBounds(0, 407, 300, 58);
 		add(lb_QL_KhoSach);
 		
@@ -117,24 +117,24 @@ public class MenuLeft extends JPanel{
 		lb_QL_KhachHang.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_KhachHang.setBackground(new Color(34, 133, 205));
+				lb_QL_KhachHang.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_KhachHang.setBackground(new Color(135, 200, 246));
+				lb_QL_KhachHang.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "khachhang");
 				reset();
-				lb_QL_KhachHang.setBackground(new Color(34, 133, 205));
+				lb_QL_KhachHang.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_KhachHang.setOpaque(true);
 		lb_QL_KhachHang.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_KhachHang.setForeground(Color.WHITE);
 		lb_QL_KhachHang.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lb_QL_KhachHang.setBackground(new Color(135, 200, 246));
+		lb_QL_KhachHang.setBackground(new Color(189, 156, 145));
 		lb_QL_KhachHang.setBounds(0, 470, 300, 58);
 		add(lb_QL_KhachHang);
 		
@@ -143,24 +143,24 @@ public class MenuLeft extends JPanel{
 		lb_QL_DoanhThu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_DoanhThu.setBackground(new Color(34, 133, 205));
+				lb_QL_DoanhThu.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_DoanhThu.setBackground(new Color(135, 200, 246));
+				lb_QL_DoanhThu.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "doanhthu");
 				reset();
-				lb_QL_DoanhThu.setBackground(new Color(34, 133, 205));
+				lb_QL_DoanhThu.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_DoanhThu.setOpaque(true);
 		lb_QL_DoanhThu.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_DoanhThu.setForeground(Color.WHITE);
 		lb_QL_DoanhThu.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lb_QL_DoanhThu.setBackground(new Color(135, 200, 246));
+		lb_QL_DoanhThu.setBackground(new Color(189, 156, 145));
 		lb_QL_DoanhThu.setBounds(0, 533, 300, 58);
 		add(lb_QL_DoanhThu);
 		
@@ -169,34 +169,28 @@ public class MenuLeft extends JPanel{
 		lb_QL_ThongKe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				lb_QL_ThongKe.setBackground(new Color(34, 133, 205));
+				lb_QL_ThongKe.setBackground(new Color(85, 66, 59));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				lb_QL_ThongKe.setBackground(new Color(135, 200, 246));
+				lb_QL_ThongKe.setBackground(new Color(189, 156, 145));
 			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Service.getInstance().getMain().getBody().getCardLayout().show(Service.getInstance().getMain().getBody(), "thongke");
 				reset();
-				lb_QL_ThongKe.setBackground(new Color(34, 133, 205));
+				lb_QL_ThongKe.setBackground(new Color(46, 36, 32));
 			}
 		});
 		lb_QL_ThongKe.setOpaque(true);
 		lb_QL_ThongKe.setHorizontalAlignment(SwingConstants.CENTER);
 		lb_QL_ThongKe.setForeground(Color.WHITE);
 		lb_QL_ThongKe.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lb_QL_ThongKe.setBackground(new Color(135, 200, 246));
+		lb_QL_ThongKe.setBackground(new Color(189, 156, 145));
 		lb_QL_ThongKe.setBounds(0, 596, 300, 58);
 		add(lb_QL_ThongKe);
 	}
 	
 	public void reset() {
-		lb_QL_CuaHang.setBackground(new Color(135, 200, 246));
-		lb_QL_NhanVien.setBackground(new Color(135, 200, 246));
-		lb_QL_KhoSach.setBackground(new Color(135, 200, 246));
-		lb_QL_KhachHang.setBackground(new Color(135, 200, 246));
-		lb_QL_DoanhThu.setBackground(new Color(135, 200, 246));
-		lb_QL_ThongKe.setBackground(new Color(135, 200, 246));
 	}
 }

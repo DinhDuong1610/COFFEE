@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 
 import model.Model_KhachHang;
 import model.Model_NhanVien;
-import model.Model_Sach;
+import model.Model_Nuoc;
 
 public class XMLExporter {
 
@@ -77,7 +77,7 @@ public class XMLExporter {
         }
     }
     
-    public static void exportSachListToXML(List<Model_Sach> sachList) {
+    public static void exportSachListToXML(List<Model_Nuoc> sachList) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Chọn nơi lưu trữ");
 
@@ -95,25 +95,22 @@ public class XMLExporter {
         }
     }
 
-    private static void exportSachListToXML(List<Model_Sach> sachList, String filePath) {
+    private static void exportSachListToXML(List<Model_Nuoc> sachList, String filePath) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
             Document doc = docBuilder.newDocument();
-            Element rootElement = doc.createElement("sachlist");
+            Element rootElement = doc.createElement("nuocList");
             doc.appendChild(rootElement);
 
-            for (Model_Sach sach : sachList) {
-                Element sachElement = doc.createElement("sach");
+            for (Model_Nuoc sach : sachList) {
+                Element sachElement = doc.createElement("Nuoc");
                 rootElement.appendChild(sachElement);
 
-                createElementWithValue(doc, sachElement, "maSach", String.valueOf(sach.getMaSach()));
+                createElementWithValue(doc, sachElement, "maNuoc", String.valueOf(sach.getMaNuoc()));
                 createElementWithValue(doc, sachElement, "ten", sach.getTen());
-                createElementWithValue(doc, sachElement, "theLoai", sach.getTheLoai());
-                createElementWithValue(doc, sachElement, "tacGia", sach.getTacGia());
-                createElementWithValue(doc, sachElement, "slTonKho", String.valueOf(sach.getSlTonKho()));
-                createElementWithValue(doc, sachElement, "slDaBan", String.valueOf(sach.getSlDaBan()));
+                createElementWithValue(doc, sachElement, "loai", sach.getLoai());
                 createElementWithValue(doc, sachElement, "donGia", String.valueOf(sach.getDonGia()));
             }
             

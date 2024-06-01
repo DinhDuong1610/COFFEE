@@ -9,12 +9,13 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import EnCode.ImageUtil;
-import model.Model_Sach;
+import model.Model_Nuoc;
 
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
@@ -23,9 +24,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Item_Sach extends JPanel{
-	private Model_Sach sach;
+	private Model_Nuoc sach;
 	
-	public Item_Sach(Model_Sach sach) {
+	public Item_Sach(Model_Nuoc sach) {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -49,7 +50,7 @@ public class Item_Sach extends JPanel{
 		lb_anh.setBorder(new LineBorder(SystemColor.controlHighlight));
         ImageUtil.setImageLabelFromBytes(sach.getHinhAnh(), lb_anh, 150, 150);
 //		lb_anh.setIcon(new ImageIcon(new ImageIcon(Item_Sach.class.getResource("/images/dacnhantam.jpg")).getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-		lb_anh.setBackground(new Color(100, 149, 237));
+		lb_anh.setBackground(new Color(255, 255, 255));
 		lb_anh.setOpaque(true);
 		lb_anh.setBounds(0, 0, 150, 150);
 		add(lb_anh);
@@ -58,6 +59,7 @@ public class Item_Sach extends JPanel{
 		lb_ten.setWrapStyleWord(true);
 		lb_ten.setLineWrap(true);
 		lb_ten.setEditable(false);
+		lb_ten.setAlignmentX(Component.RIGHT_ALIGNMENT);
 		lb_ten.setBackground(new Color(255, 255, 255));
 		lb_ten.setFont(new Font("Tahoma", Font.BOLD, 14));
 		JScrollPane scroll = new JScrollPane(lb_ten);

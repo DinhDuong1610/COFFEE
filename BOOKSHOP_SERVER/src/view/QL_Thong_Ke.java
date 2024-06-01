@@ -33,7 +33,7 @@ public class QL_Thong_Ke extends JPanel{
 		soluongList = new int[12];
 		doanhthuList = new int[12];
 		
-		setBackground(Color.WHITE);
+		setBackground(new Color(238, 228, 221));
 		setSize(1240, 830);
 		setLayout(null);
 		
@@ -56,6 +56,7 @@ public class QL_Thong_Ke extends JPanel{
 		panel_doanhthu.setLayout(null);
 			
 		chart_doanhthu = new Chart();
+		chart_doanhthu.setBackground(new Color(255, 255, 255));
 		chart_doanhthu.setLocation(0, 0);
 		chart_doanhthu.setSize(1102, 637);
 		panel_doanhthu.add(chart_doanhthu);
@@ -63,8 +64,9 @@ public class QL_Thong_Ke extends JPanel{
 		chart_doanhthu.addLegend("Doanh thu", new Color(38, 190, 51));
 			
 		chart_soluong = new Chart();
+		chart_soluong.setBackground(new Color(255,255,255));
 		chart_soluong.setLocation(0, 0);
-		chart_soluong.setSize(1102, 627);
+		chart_soluong.setSize(1102, 637);
 		panel_soluong.add(chart_soluong);
 		
 		bt_refresh = new JButton("");

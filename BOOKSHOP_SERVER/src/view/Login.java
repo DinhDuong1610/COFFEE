@@ -38,7 +38,7 @@ public class Login extends JPanel{
 	public Login() {
 		setSize(1554, 840);
 		setLayout(null);
-		setBackground(new Color(74, 170, 239));
+		setBackground(new Color(189, 156, 145));
 		
 		panel = new JPanel();
 		panel.setBounds(989, 174, 361, 434);
@@ -217,7 +217,7 @@ public class Login extends JPanel{
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(280, 174, 300, 300);
-		lblNewLabel_3.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_sach.jpg")).getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH)));
+		lblNewLabel_3.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_login.png")).getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH)));
 		add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("WELCOME");

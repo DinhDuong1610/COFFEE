@@ -55,7 +55,7 @@ public class QL_KhachHang extends JPanel{
 	private PlaceholderTextField tf_loc_sdt;
 	
 	public QL_KhachHang() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(238, 228, 221));
 		setSize(1240, 830);
 		setLayout(null);
 		

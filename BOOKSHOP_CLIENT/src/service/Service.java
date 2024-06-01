@@ -18,7 +18,7 @@ import org.json.JSONObject;
 import model.Model_DonMua;
 import model.Model_KhachHang;
 import model.Model_Register;
-import model.Model_Sach;
+import model.Model_Nuoc;
 import view.Main;
 
 public class Service {
@@ -91,7 +91,7 @@ public class Service {
 	    		JSONArray jsonArray = jsonData.getJSONArray("jsonArray");
 	            for (int i = 0; i < jsonArray.length(); i++) {
 	                JSONObject json = jsonArray.getJSONObject(i);
-	                Model_Sach sach = new Model_Sach(json);
+	                Model_Nuoc sach = new Model_Nuoc(json);
 	                main.getBody().addSach(sach);
 		    	}
 	    	}
@@ -111,6 +111,16 @@ public class Service {
 	    		Model_KhachHang khachhang = new Model_KhachHang(jsonData);
 	    		main.getMenuLeft().tracuu(khachhang);
 	    	}
+	    	else if(jsonData.getString("type").equals("tang")) {
+	    		JSONArray jsonArray = jsonData.getJSONArray("array");
+	            boolean[] tang = new boolean[jsonArray.length()];
+	            for (int i = 0; i < jsonArray.length(); i++) {
+	                tang[i] = jsonArray.getBoolean(i);
+	            }
+	            main.getBody().tang = tang;
+	            main.getBody().addBan(tang);
+	    	}
+	    	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -210,6 +220,29 @@ public class Service {
         try {
 			jsonData.put("type", "xuatHoaDonSach");
 			jsonData.put("jsonArray", jsonArray);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+        new Thread(() -> {
+            try {
+                OutputStreamWriter writer = new OutputStreamWriter(out, StandardCharsets.UTF_8);
+                writer.write(jsonData.toString() + "\n");
+                writer.flush();
+    		} catch (IOException e) {
+    			e.printStackTrace();
+    		}
+        }).start();  
+    }
+    
+    public void tang(int tang) {
+        JSONArray jsonArray3 = new JSONArray();
+        for (boolean value : main.getBody().tang) {
+            jsonArray3.put(value);
+        }
+        JSONObject jsonData = new JSONObject();
+        try {
+        	jsonData.put("type", "tang" + tang);
+        	jsonData.put("array", jsonArray3);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

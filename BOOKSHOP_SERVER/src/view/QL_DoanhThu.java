@@ -43,7 +43,7 @@ public class QL_DoanhThu extends JPanel{
 	private JDateChooser date_to;
 	
 	public QL_DoanhThu() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(238, 228, 221));
 		setSize(1240, 830);
 		setLayout(null);
 		
@@ -120,7 +120,7 @@ public class QL_DoanhThu extends JPanel{
 		bt_homnay.setHorizontalAlignment(SwingConstants.CENTER);
 		bt_homnay.setBounds(53, 120, 124, 48);
 		bt_homnay.setOpaque(true);
-		bt_homnay.setBackground(new Color(183, 225, 255));
+		bt_homnay.setBackground(new Color(213, 191, 172));
 		add(bt_homnay);
 		
 		JLabel bt_thangnay = new JLabel("Tháng nay");
@@ -138,7 +138,7 @@ public class QL_DoanhThu extends JPanel{
 		bt_thangnay.setOpaque(true);
 		bt_thangnay.setHorizontalAlignment(SwingConstants.CENTER);
 		bt_thangnay.setFont(new Font("Tahoma", Font.BOLD, 20));
-		bt_thangnay.setBackground(new Color(125, 201, 255));
+		bt_thangnay.setBackground(new Color(152, 132, 119));
 		bt_thangnay.setBounds(176, 120, 124, 48);
 		add(bt_thangnay);
 		
@@ -157,7 +157,7 @@ public class QL_DoanhThu extends JPanel{
 		bt_namnay.setOpaque(true);
 		bt_namnay.setHorizontalAlignment(SwingConstants.CENTER);
 		bt_namnay.setFont(new Font("Tahoma", Font.BOLD, 20));
-		bt_namnay.setBackground(new Color(49, 166, 250));
+		bt_namnay.setBackground(new Color(100, 81, 72));
 		bt_namnay.setBounds(299, 120, 124, 48);
 		add(bt_namnay);
 		

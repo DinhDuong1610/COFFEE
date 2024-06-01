@@ -13,24 +13,24 @@ import javax.swing.JOptionPane;
 import model.Model_DoanhThu;
 import model.Model_DonMua;
 import model.Model_NhanVien;
-import model.Model_Sach;
+import model.Model_Nuoc;
 
 public class DBDoanhThu {
 	private final Connection con;
 	private static DBDoanhThu instance;
 	
-	private final String SELECT_DONMUA = "SELECT donmua.MaDonMua, sach.HinhAnh, sach.Ten, khachhang.Ten, donmua.SoLuong, donmua.NgayMua\r\n"
+	private final String SELECT_DONMUA = "SELECT donmua.MaDonMua, nuoc.HinhAnh, nuoc.Ten, khachhang.Ten, donmua.SoLuong, donmua.NgayMua\r\n"
 			+ "FROM donmua JOIN khachhang ON donmua.MaKhachHang = khachhang.MaKhachHang\r\n"
-			+ "JOIN sach ON donmua.MaSach = sach.MaSach ORDER BY donmua.MaDonMua ASC";
-	private final String SELECT_TIMKIEM_DOMMUA = "SELECT donmua.MaDonMua, sach.HinhAnh, sach.Ten, khachhang.Ten, donmua.SoLuong, donmua.NgayMua\r\n"
+			+ "JOIN nuoc ON donmua.MaNuoc = nuoc.MaNuoc ORDER BY donmua.MaDonMua ASC";
+	private final String SELECT_TIMKIEM_DOMMUA = "SELECT donmua.MaDonMua, nuoc.HinhAnh, nuoc.Ten, khachhang.Ten, donmua.SoLuong, donmua.NgayMua\r\n"
 			+ "FROM donmua JOIN khachhang ON donmua.MaKhachHang = khachhang.MaKhachHang\r\n"
-			+ "JOIN sach ON donmua.MaSach = sach.MaSach "
+			+ "JOIN nuoc ON donmua.MaNuoc = nuoc.MaNuoc "
 			+ "WHERE donmua.ngaymua BETWEEN ? AND ?";
-	private final String SELECT_GIASACH = "SELECT dongia FROM sach JOIN donmua ON sach.maSach = donmua.maSach WHERE maDonMua=?";
-	private final String SELECT_THONGKE_DOMMUA = "SELECT sach.dongia, donmua.SoLuong\r\n"
-			+ "FROM donmua JOIN sach ON donmua.MaSach = sach.MaSach "
+	private final String SELECT_GIASACH = "SELECT dongia FROM nuoc JOIN donmua ON donmua.MaNuoc = nuoc.MaNuoc WHERE maDonMua=?";
+	private final String SELECT_THONGKE_DOMMUA = "SELECT nuoc.dongia, donmua.SoLuong\r\n"
+			+ "FROM donmua JOIN nuoc ON donmua.MaNuoc = nuoc.MaNuoc "
 			+ "WHERE donmua.ngaymua BETWEEN ? AND ?";
-	private final String INSERT_DONMUA = "INSERT INTO donmua (makhachhang, masach, soluong, ngaymua) VALUES (?,?,?,?)";
+	private final String INSERT_DONMUA = "INSERT INTO donmua (makhachhang, manuoc, soluong, ngaymua) VALUES (?,?,?,?)";
 	
 	public static DBDoanhThu getInstance() {
 		if(instance == null) {

@@ -2,9 +2,11 @@ package service;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
@@ -18,15 +20,16 @@ import org.json.JSONObject;
 import dao.DBAccount;
 import dao.DBDoanhThu;
 import dao.DBKhachHang;
-import dao.DBSach;
+import dao.DBNuoc;
 import dao.DatabaseConnection;
 import model.Model_DonMua;
 import model.Model_KhachHang;
 import model.Model_Login;
 import model.Model_NhanVien;
 import model.Model_Register;
-import model.Model_Sach;
+import model.Model_Nuoc;
 import view.Main;
+import view.QL_CuaHang;
 
 public class Service {
     private static Service instance;
@@ -129,9 +132,53 @@ public class Service {
         	            json3.put("quay", quay);
         	            broadcast(client.getUserId(), json3);
     	            	
-        	            List<Model_Sach> list = DBSach.getInstance().loadSach();
+    	            	//Load Tầng
+    	            	if(quay == 1) {
+        	                JSONArray jsonArray3 = new JSONArray();
+        	                for (boolean value : QL_CuaHang.tang1) {
+        	                    jsonArray3.put(value);
+        	                }
+        	                JSONObject jsonObject3 = new JSONObject();
+        	                try {
+        	                	jsonObject3.put("type", "tang");
+        	        			jsonObject3.put("array", jsonArray3);
+        	        		} catch (JSONException e) {
+        	        			e.printStackTrace();
+        	        		}
+        	                broadcast(client.getUserId(), jsonObject3);
+    	            	}
+    	            	else if(quay == 2) {
+        	                JSONArray jsonArray3 = new JSONArray();
+        	                for (boolean value : QL_CuaHang.tang2) {
+        	                    jsonArray3.put(value);
+        	                }
+        	                JSONObject jsonObject3 = new JSONObject();
+        	                try {
+        	                	jsonObject3.put("type", "tang");
+        	        			jsonObject3.put("array", jsonArray3);
+        	        		} catch (JSONException e) {
+        	        			e.printStackTrace();
+        	        		}
+        	                broadcast(client.getUserId(), jsonObject3);
+    	            	}
+    	            	else if(quay == 3) {
+        	                JSONArray jsonArray3 = new JSONArray();
+        	                for (boolean value : QL_CuaHang.tang3) {
+        	                    jsonArray3.put(value);
+        	                }
+        	                JSONObject jsonObject3 = new JSONObject();
+        	                try {
+        	                	jsonObject3.put("type", "tang");
+        	        			jsonObject3.put("array", jsonArray3);
+        	        		} catch (JSONException e) {
+        	        			e.printStackTrace();
+        	        		}
+        	                broadcast(client.getUserId(), jsonObject3);
+    	            	}
+    	            	
+        	            List<Model_Nuoc> list = DBNuoc.getInstance().loadSach();
         	            JSONArray jsonArray = new JSONArray();
-        	            for(Model_Sach sach : list) {    	    
+        	            for(Model_Nuoc sach : list) {    	    
         	            	jsonArray.put(sach.toJsonObject("listSach"));
         	            }
         	            JSONObject json2 = new JSONObject();
@@ -170,21 +217,47 @@ public class Service {
     	                JSONObject json = jsonArray.getJSONObject(i);
     	                Model_DonMua donmua = new Model_DonMua(json);
     	                DBDoanhThu.getInstance().themDonMua(donmua);
-    	                DBSach.getInstance().updateSoLuong(donmua.getMaSach(), donmua.getSoluong());
     	            }
     	            main.getBody().getDoanhthu().loadDonMua();
     	            main.getBody().getKhosach().loadSach();
     	            
     	            
-    	            List<Model_Sach> list2 = DBSach.getInstance().loadSach();
+    	            List<Model_Nuoc> list2 = DBNuoc.getInstance().loadSach();
     	            JSONArray jsonArray2 = new JSONArray();
-    	            for(Model_Sach sach : list2) {    	    
+    	            for(Model_Nuoc sach : list2) {    	    
     	            	jsonArray2.put(sach.toJsonObject("listSach"));
     	            }
     	            JSONObject json2 = new JSONObject();
     	            json2.put("type", "listSach");
     	            json2.put("jsonArray", jsonArray2);
 	            	broadcast(client.getUserId(), json2);
+    	    	}
+    	    	else if(jsonData.getString("type").equals("tang1")) {
+    	    		JSONArray jsonArray = jsonData.getJSONArray("array");
+    	            boolean[] tang = new boolean[jsonArray.length()];
+    	            for (int i = 0; i < jsonArray.length(); i++) {
+    	                tang[i] = jsonArray.getBoolean(i);
+    	            }
+    	            main.getBody().getCuahang().setTang1(tang);
+    	            main.getBody().getCuahang().loadBan();
+    	    	}
+    	    	else if(jsonData.getString("type").equals("tang2")) {
+    	    		JSONArray jsonArray = jsonData.getJSONArray("array");
+    	            boolean[] tang = new boolean[jsonArray.length()];
+    	            for (int i = 0; i < jsonArray.length(); i++) {
+    	                tang[i] = jsonArray.getBoolean(i);
+    	            }
+    	            main.getBody().getCuahang().setTang2(tang);
+    	            main.getBody().getCuahang().loadBan();
+    	    	}
+    	    	else if(jsonData.getString("type").equals("tang3")) {
+    	    		JSONArray jsonArray = jsonData.getJSONArray("array");
+    	            boolean[] tang = new boolean[jsonArray.length()];
+    	            for (int i = 0; i < jsonArray.length(); i++) {
+    	                tang[i] = jsonArray.getBoolean(i);
+    	            }
+    	            main.getBody().getCuahang().setTang3(tang);
+    	            main.getBody().getCuahang().loadBan();
     	    	}
 
     		} catch (JSONException e) {
@@ -199,7 +272,12 @@ public class Service {
             	client.sendMessage(jsonData);
             }
         }
-}
+    }
+    
+    public void xuatTang1(boolean[] tang) {
+
+   
+    }
     
 
 	public Main getMain() {

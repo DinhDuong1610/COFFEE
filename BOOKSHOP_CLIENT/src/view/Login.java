@@ -38,7 +38,7 @@ public class Login extends JPanel{
 	public Login() {
 		setSize(1554, 840);
 		setLayout(null);
-		setBackground(new Color(74, 170, 239));
+		setBackground(new Color(189, 156, 145));
 		
 		panel = new JPanel();
 		panel.setBounds(989, 174, 361, 434);
@@ -69,12 +69,12 @@ public class Login extends JPanel{
 		tf_password.setBounds(25, 221, 315, 39);
 		panel_login.add(tf_password);
 		
-		JLabel lblNewLabel_5 = new JLabel("QUẦY");
+		JLabel lblNewLabel_5 = new JLabel("TẦNG");
 		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_5.setBounds(125, 68, 70, 26);
 		panel_login.add(lblNewLabel_5);
 		
-		String[] itemQuay = { "1", "2", "3", "4", "5", "6" };
+		String[] itemQuay = {"1", "2", "3"};
 		JComboBox<String> cb_quay = new JComboBox<String>(itemQuay);
 		cb_quay.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		cb_quay.setBounds(200, 68, 40, 30);
@@ -213,7 +213,7 @@ public class Login extends JPanel{
 		
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(280, 174, 300, 300);
-		lblNewLabel_3.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_sach.jpg")).getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH)));
+		lblNewLabel_3.setIcon(new ImageIcon(new ImageIcon(MenuLeft.class.getResource("/images/logo_login.png")).getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH)));
 		add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_2 = new JLabel("WELCOME");

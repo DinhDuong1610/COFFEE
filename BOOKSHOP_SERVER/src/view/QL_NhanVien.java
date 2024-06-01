@@ -56,7 +56,7 @@ public class QL_NhanVien extends JPanel{
 	private JButton bt_luu;
 	
 	public QL_NhanVien() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(238, 228, 221));
 		setSize(1240, 830);
 		setLayout(null);
 		

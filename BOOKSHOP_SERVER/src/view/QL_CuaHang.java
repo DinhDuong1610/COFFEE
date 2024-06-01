@@ -16,9 +16,12 @@ import java.awt.Font;
 public class QL_CuaHang extends JPanel{
 	
 	private JPanel panel;
-
+	public static  boolean[] tang1 = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+	public static  boolean[] tang2 = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+	public static  boolean[] tang3 = {true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true};
+	
 	public QL_CuaHang() {
-		setBackground(Color.WHITE);
+		setBackground(new Color(238, 228, 221));
 		setSize(1240, 830);
 		setLayout(null);
 		
@@ -29,67 +32,28 @@ public class QL_CuaHang extends JPanel{
 		add(lb_logo);
 		
 		panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(159, 191, 940, 613);
+		panel.setBackground(new Color(238, 228, 221));
+		panel.setBounds(165, 270, 940, 265);
 		add(panel);
-		panel.setLayout(new GridLayout(2, 3, 50, 50));
+		panel.setLayout(new GridLayout(1, 3, 50, 50));
 		
 		Item_khuSach item1 = new Item_khuSach(1);
-		item1.getLb_title().setText("SÁCH GIÁO KHOA");
+		item1.getLb_title().setText("TẦNG 1");
 		item1.getPanel().setBackground(new Color(239, 163, 163));
 		item1.getPanel().setOpaque(true);
 		panel.add(item1);
 		
 		Item_khuSach item2 = new Item_khuSach(2);
-		item2.getLb_title().setText("SÁCH KHOA HỌC");
+		item2.getLb_title().setText("TẦNG 2");
 		item2.getPanel().setBackground(new Color(255, 237, 172));
 		item2.getPanel().setOpaque(true);
 		panel.add(item2);
 		
 		Item_khuSach item3 = new Item_khuSach(3);
-		item3.getLb_title().setText("SÁCH NGHỆ THUẬT");
+		item3.getLb_title().setText("TẦNG 3");
 		item3.getPanel().setBackground(new Color(255, 183, 239));
 		item3.getPanel().setOpaque(true);
 		panel.add(item3);
-		
-		Item_khuSach item4 = new Item_khuSach(4);
-		item4.getLb_title().setText("SÁCH VĂN HỌC");
-		item4.getPanel().setBackground(new Color(133, 255, 248));
-		item4.getPanel().setOpaque(true);
-		panel.add(item4);
-
-		Item_khuSach item5 = new Item_khuSach(5);
-		item5.getLb_title().setText("SÁCH SELF HELP");
-		item5.getPanel().setBackground(new Color(210, 194, 255));
-		item5.getPanel().setOpaque(true);
-		panel.add(item5);
-		
-		Item_khuSach item6 = new Item_khuSach(6);
-		item6.getLb_title().setText("TRUYỆN TRANH");
-		item6.getPanel().setBackground(new Color(248, 215, 129));
-		item6.getPanel().setOpaque(true);
-		panel.add(item6);
-		
-		JLabel lblNewLabel = new JLabel("TẦNG 1");
-		lblNewLabel.setForeground(new Color(70, 130, 180));
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(160, 128, 278, 41);
-		add(lblNewLabel);
-		
-		JLabel lblTng = new JLabel("TẦNG 2");
-		lblTng.setForeground(new Color(70, 130, 180));
-		lblTng.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTng.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblTng.setBounds(487, 128, 278, 41);
-		add(lblTng);
-		
-		JLabel lblTng_1 = new JLabel("TẦNG 3");
-		lblTng_1.setForeground(new Color(70, 130, 180));
-		lblTng_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTng_1.setFont(new Font("Tahoma", Font.BOLD, 30));
-		lblTng_1.setBounds(821, 128, 278, 41);
-		add(lblTng_1);
 			
 	}
 	
@@ -122,4 +86,63 @@ public class QL_CuaHang extends JPanel{
 		    }
 		}
 	}
+	
+	public void loadBan() {
+		Component[] components = panel.getComponents();
+		for (Component component : components) {
+		    if (component instanceof Item_khuSach) {
+		        Item_khuSach item = (Item_khuSach) component;
+		        	item.getLb_ban().setText(soBan(item.getQuay()) + "");
+		        	panel.repaint();
+		        	panel.revalidate();
+		    }
+		}
+	}
+	
+	public int soBan(int tang) {
+		int count = 0;
+		if(tang==1) {
+			for(boolean x : tang1) {
+				if(!x) count++;
+			}
+		}
+		else if(tang==2) {
+			for(boolean x : tang2) {
+				if(!x) count++;
+			}
+		}
+		else if(tang==3) {
+			for(boolean x : tang3) {
+				if(!x) count++;
+			}
+		}
+		return count;
+	}
+
+	public static boolean[] getTang1() {
+		return tang1;
+	}
+
+	public static boolean[] getTang2() {
+		return tang2;
+	}
+
+	public static boolean[] getTang3() {
+		return tang3;
+	}
+
+	public static void setTang1(boolean[] tang1) {
+		QL_CuaHang.tang1 = tang1;
+	}
+
+	public static void setTang2(boolean[] tang2) {
+		QL_CuaHang.tang2 = tang2;
+	}
+
+	public static void setTang3(boolean[] tang3) {
+		QL_CuaHang.tang3 = tang3;
+	}
+	
+	
+	
 }
